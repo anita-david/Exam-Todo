@@ -19,7 +19,7 @@ function TodoDetail() {
   if (isError) return <p className="p-4 text-red-600">Error fetching todo</p>;
 
   return (
-    <div className="min-h-screen p-6 bg-purple-100">
+    <main className="min-h-screen p-6 bg-purple-100">
       <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow">
         <h2 className="text-2xl font-bold mb-4 text-purple-700">Todo Detail</h2>
         <p><strong>ID:</strong> {todo.id}</p>
@@ -39,7 +39,7 @@ function TodoDetail() {
           Back
         </button>
       </div>
-    </div>
+    </main>
   );
 }
 
