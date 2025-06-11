@@ -1,7 +1,6 @@
-// pages/TodoDetail.jsx
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-
+import { loadLocalTodos } from "../utils/localStorage";
 function TodoDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -13,6 +12,13 @@ function TodoDetail() {
   } = useQuery({
     queryKey: ["todo", id],
     queryFn: async () => {
+      if (id.startsWith("local-")) {
+        const localTodos = loadLocalTodos();
+        const found = localTodos.find((todo) => todo.id === id);
+        if (!found) throw new Error("Todo not found in local storage");
+        return found;
+      }
+
       const res = await fetch(
         `https://jsonplaceholder.typicode.com/todos/${id}`
       );

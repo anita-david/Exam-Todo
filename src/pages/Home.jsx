@@ -43,27 +43,12 @@ function Home() {
 
   const addTodoMutation = useMutation({
     mutationFn: async (newTodo) => {
-      const res = await fetch("https://jsonplaceholder.typicode.com/todos", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newTodo),
-      });
-      return res.json();
+      return newTodo;
     },
     onSuccess: (data) => {
-      const uniqueId = nanoid();
-
-      const normalized = {
-        id: data.id === 201 ? uniqueId : data.id,
-        title: data.title || "",
-        completed: data.completed ?? false,
-      };
-
-      if (data.id === 201) {
-        saveLocalTodo(normalized);
-      }
-
-      queryClient.setQueryData(["todos"], (old = []) => [normalized, ...old]);
+      saveLocalTodo(data);
+      queryClient.setQueryData(["todos"], (old = []) => [data, ...old]);
+      queryClient.setQueryData(["todo", data.id], data);
     },
   });
 
@@ -118,10 +103,14 @@ function Home() {
   };
 
   const handleAdd = (todo) => {
+    const localId = `local-${nanoid()}`;
+
     const newTodo = {
       ...todo,
+      id: localId, // ✅ generate ID here
       completed: false,
     };
+
     addTodoMutation.mutate(newTodo);
   };
 

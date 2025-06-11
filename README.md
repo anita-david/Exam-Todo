@@ -4,7 +4,7 @@ A fully-featured Todo App built with React 19, TanStack Router, TanStack Query, 
 
 ---
 
-##  Features
+## Features
 
 - Fetch, create, update, and delete todos
 - Pagination (10 todos per page)
@@ -17,36 +17,36 @@ A fully-featured Todo App built with React 19, TanStack Router, TanStack Query, 
 
 ---
 
-##  Demo
+## Demo
 
-**Live URL**: 
-
----
-
-##  Tech Stack
-
-| Tool | Purpose |
-|------|---------|
-| **React 19+** | Functional component architecture |
-| **TanStack Router** | Nested and dynamic routing |
-| **TanStack Query** | Data fetching, caching, and mutation |
-| **TailwindCSS** | Fast, utility-first styling |
-| **Lucide React** | Icon set |
-| **localStorage API** | Data persistence when offline |
+**Live URL**:
 
 ---
 
-##  Screenshots
+## Tech Stack
 
-| Todo List Page | Detail Page |
-|----------------|-------------|
+| Tool                 | Purpose                              |
+| -------------------- | ------------------------------------ |
+| **React 19+**        | Functional component architecture    |
+| **TanStack Router**  | Nested and dynamic routing           |
+| **TanStack Query**   | Data fetching, caching, and mutation |
+| **TailwindCSS**      | Fast, utility-first styling          |
+| **Lucide React**     | Icon set                             |
+| **localStorage API** | Data persistence when offline        |
+
+---
+
+## Screenshots
+
+| Todo List Page                       | Detail Page                              |
+| ------------------------------------ | ---------------------------------------- |
 | ![List](./screenshots/todo-list.png) | ![Detail](./screenshots/todo-detail.png) |
 
 _(Replace with actual image paths or upload screenshots/GIFs to your repo)_
 
 ---
 
-##  How to Run Locally
+## How to Run Locally
 
 ```bash
 # Clone repo
@@ -59,9 +59,11 @@ npm install
 # Start development server
 npm run dev
 ```
+
 ---
 
 ## Architectural Decisions
+
 TanStack Router was chosen for its modern nested routing capabilities and tight React integration.
 
 TanStack Query simplifies data fetching and syncing with the server.
@@ -73,11 +75,12 @@ localStorage was used to persist user-created todos that don't exist on the mock
 ---
 
 ## Limitations
+
 Handling update/delete logic for newly created todos not in the JSON API
 
 ---
 
-##  Available Scripts
+## Available Scripts
 
 ```bash
 # Create production build
@@ -92,9 +95,11 @@ npm install
 # Start development server
 npm run dev
 ```
+
 ---
 
 ## Future Improvements
+
 Replace JSONPlaceholder with a real backend
 
 Add user authentication

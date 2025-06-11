@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 const LOCAL_KEY = "localTodos";
 
 export function loadLocalTodos() {
@@ -6,8 +7,13 @@ export function loadLocalTodos() {
 }
 
 export function saveLocalTodo(todo) {
+  const newTodo = {
+    ...todo,
+    id: `local-${nanoid()}`,
+  };
+
   const todos = loadLocalTodos();
-  todos.unshift(todo);
+  todos.unshift(newTodo);
   localStorage.setItem(LOCAL_KEY, JSON.stringify(todos));
 }
 
