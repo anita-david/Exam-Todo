@@ -145,13 +145,13 @@ function Home() {
         </div>
         <button
           onClick={() => setShowAddModal(true)}
-          className="w-full mb-4 py-2 px-4 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700"
+          className="w-full mb-4 py-2 px-4 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 cursor-pointer"
         >
           Add Todo
         </button>
         <button
           onClick={refetch}
-          className="w-full mb-4 py-2 px-4 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700"
+          className="w-full mb-4 py-2 px-4 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 cursor-pointer"
         >
           Load Todos
         </button>
@@ -168,7 +168,7 @@ function Home() {
               <button
                 key={status}
                 onClick={() => setFilterStatus(status)}
-                className={`px-3 py-1 rounded-lg text-sm font-medium transition shadow-sm ${
+                className={`px-3 py-1 rounded-lg text-sm font-medium transition shadow-sm cursor-pointer ${
                   filterStatus === status
                     ? "bg-purple-600 text-white"
                     : "bg-white border border-purple-300 text-purple-600"
