@@ -38,11 +38,10 @@ A fully-featured Todo App built with React 19, TanStack Router, TanStack Query, 
 
 ## Screenshots
 
-| Todo List Page                       | Detail Page                              |
-| ------------------------------------ | ---------------------------------------- |
-| ![Fetched and Displayed Todos](/public/IMG_9393.PNG) | ![Loading State](/public/IMG_9394.PNG) |![List](/public/IMG_9393.PNG) | ![List](/public/IMG_9393.PNG) |![List](/public/IMG_9393.PNG) | ![List](/public/IMG_9393.PNG) | ![List](/public/IMG_9393.PNG) |![List](/public/IMG_9393.PNG) | ![List](/public/IMG_9393.PNG) | ![List](/public/IMG_9393.PNG) |
-
-_(Replace with actual image paths or upload screenshots/GIFs to your repo)_
+| Fetched and Displayed Todos | Loading State |
+Pagination
+| Edit Todo | Todo Detail | 404 Page | Error Boundary Page| Completed Todos | Incomplete Todos | Add Todo | 
+| ![Fetched and Displayed Todos](/public/IMG_9393.PNG) | ![Loading State](/public/IMG_9394.PNG) | ![Pagination](/public/IMG_9395.PNG) | ![Edit Todo](/public/IMG_9396.PNG) | ![Todo Detail](/public/IMG_9397.PNG) | ![404 Page](/public/IMG_9398.PNG) | ![Error Boundary Page](/public/IMG_9399.PNG) | ![Completed Todos](/public/IMG_9400.PNG) | ![Incomplete Todos](/public/IMG_9401.PNG) | ![Add Todo](/public/IMG_9402.PNG) |
 
 ---
 
