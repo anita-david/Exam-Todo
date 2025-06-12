@@ -1,6 +1,6 @@
 # React Todo App – AltSchool Second Semester Exam Project
 
-A fully-featured Todo App built with React 19, TanStack Router, TanStack Query, and TailwindCSS. This project is part of the AltSchool of Frontend Engineering Tinyuka 2024 Second Semester Examination.
+A fully-featured Todo App built with React 19, TanStack Router, TanStack Query, and TailwindCSS. This project is my submission for the AltSchool of Frontend Engineering Tinyuka 2024 Second Semester Examination.
 
 ---
 
@@ -11,7 +11,7 @@ A fully-featured Todo App built with React 19, TanStack Router, TanStack Query, 
 - Todo detail page via nested routing
 - Search and filter (by title & completion status)
 - Responsive UI with keyboard navigation
-- Offline/local todo support (via localStorage)
+- Local todo support (via localStorage)
 - Error handling (error boundary + 404)
 - Loading states & visual feedback
 
@@ -40,11 +40,11 @@ A fully-featured Todo App built with React 19, TanStack Router, TanStack Query, 
 
 | Fetched Todos | Loading State | Pagination | Edit Todo | Todo Detail |
 |---------------|---------------|------------|-----------|-------------|
-| ![Fetched Todos](./public/IMG_9393.PNG) | ![Loading State](./public/IMG_9394.PNG) | ![Pagination](./public/IMG_9395.PNG) | ![Edit Todo](./public/IMG_9396.PNG) | ![Todo Detail](./public/IMG_9397.PNG) |
+| ![Fetched Todos](/public/IMG_9393.PNG) | ![Loading State](/public/IMG_9394.PNG) | ![Pagination](/public/IMG_9395.PNG) | ![Edit Todo](/public/IMG_9396.PNG) | ![Todo Detail](/public/IMG_9397.PNG) |
 
 | 404 Page | Error Boundary | Completed Todos | Incomplete Todos | Add Todo |
 |----------|----------------|------------------|-------------------|----------|
-| ![404 Page](./public/IMG_9398.PNG) | ![Error Boundary](./public/IMG_9399.PNG) | ![Completed](./public/IMG_9400.PNG) | ![Incomplete](./public/IMG_9401.PNG) | ![Add Todo](./public/IMG_9402.PNG) |
+| ![404 Page](/public/IMG_9398.PNG) | ![Error Boundary](/public/IMG_9399.PNG) | ![Completed](/public/IMG_9400.PNG) | ![Incomplete](/public/IMG_9401.PNG) | ![Add Todo](/public/IMG_9402.PNG) |
 
 
 ---
@@ -52,14 +52,14 @@ A fully-featured Todo App built with React 19, TanStack Router, TanStack Query, 
 ## How to Run Locally
 
 ```bash
-# Clone repo
-git clone https://github.com/your-username/react-todo-alt.git
-cd react-todo-alt
 
-# Install dependencies
+git clone https://github.com/anita-david/Exam-Todo.git
+cd Exam-Todo
+
+
 npm install
 
-# Start development server
+
 npm run dev
 ```
 
@@ -86,16 +86,16 @@ Handling update/delete logic for newly created todos not in the JSON API
 ## Available Scripts
 
 ```bash
-# Create production build
+
 npm run build
 
-# preview production build locally
+
 npm run preview
 
-# Install dependencies
+
 npm install
 
-# Start development server
+
 npm run dev
 ```
 
@@ -116,4 +116,4 @@ Add unit/integration tests
 # Author
 
 Anita David
-Frontend Developer at AltSchool
+
