@@ -107,7 +107,7 @@ function Home() {
 
     const newTodo = {
       ...todo,
-      id: localId, // ✅ generate ID here
+      id: localId,
       completed: false,
     };
 
