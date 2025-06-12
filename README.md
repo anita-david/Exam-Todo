@@ -19,7 +19,7 @@ A fully-featured Todo App built with React 19, TanStack Router, TanStack Query, 
 
 ## Demo
 
-**Live URL**:
+**Live URL**: https://anita-david-todo-exam.vercel.app/
 
 ---
 
@@ -40,7 +40,7 @@ A fully-featured Todo App built with React 19, TanStack Router, TanStack Query, 
 
 | Todo List Page                       | Detail Page                              |
 | ------------------------------------ | ---------------------------------------- |
-| ![List](./screenshots/todo-list.png) | ![Detail](./screenshots/todo-detail.png) |
+| ![Fetched and Displayed Todos](/public/IMG_9393.PNG) | ![Loading State](/public/IMG_9394.PNG) |![List](/public/IMG_9393.PNG) | ![List](/public/IMG_9393.PNG) |![List](/public/IMG_9393.PNG) | ![List](/public/IMG_9393.PNG) | ![List](/public/IMG_9393.PNG) |![List](/public/IMG_9393.PNG) | ![List](/public/IMG_9393.PNG) | ![List](/public/IMG_9393.PNG) |
 
 _(Replace with actual image paths or upload screenshots/GIFs to your repo)_
 
