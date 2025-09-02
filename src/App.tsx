@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import TodoDetail from "./pages/TodoDetail";
-import NotFound from "./pages/NotFound";
-import CrashTest from "./pages/CrashTest";
+import TodoDetail from "./pages/TodoDetail.tsx";
+import NotFound from "./pages/NotFound.tsx";
+import CrashTest from "./pages/CrashTest.tsx";
 
 function App() {
   return (

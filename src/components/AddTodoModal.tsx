@@ -1,9 +1,14 @@
 import { useState } from "react";
 
-export default function AddTodoModal({ onClose, onAdd }) {
-  const [title, setTitle] = useState("");
+interface AddTodoModalProps {
+  onClose: () => void;
+  onAdd: (todo: { title: string; completed: boolean }) => void;
+}
 
-  const handleSubmit = (e) => {
+export default function AddTodoModal({ onClose, onAdd }: AddTodoModalProps) {
+  const [title, setTitle] = useState<string>("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!title.trim()) return;
     onAdd({ title, completed: false });

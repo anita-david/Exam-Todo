@@ -1,10 +1,22 @@
 import { useState } from "react";
 
-export default function EditTodoModal({ todo, onClose, onUpdate }) {
-  const [title, setTitle] = useState(todo.title);
-  const [completed, setCompleted] = useState(todo.completed);
+type Todo = {
+  id: string;
+  title: string;
+  completed: boolean;
+};
 
-  const handleSubmit = (e) => {
+type EditTodoModalProps = {
+  todo: Todo;
+  onClose: () => void;
+  onUpdate: (updatedTodo: Todo) => void;
+};
+
+export default function EditTodoModal({ todo, onClose, onUpdate }: EditTodoModalProps) {
+  const [title, setTitle] = useState<string>(todo.title);
+  const [completed, setCompleted] = useState<boolean>(todo.completed);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onUpdate({ ...todo, title, completed });
     onClose();
