@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import TodoItem from "../components/TodoItem";
+import TodoItem from "../components/TodoItem.tsx";
 import AddTodoModal from "../components/AddTodoModal";
 import EditTodoModal from "../components/EditTodoModal";
 import { nanoid } from "nanoid";
@@ -11,14 +11,23 @@ import {
   deleteLocalTodo,
 } from "../utils/localStorage";
 
+interface Todo {
+  id: string;
+  title: string;
+  completed: boolean;
+  userId?: number;
+}
+
 function Home() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const todosPerPage = 10;
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filterStatus, setFilterStatus] = useState("all");
-  const [showAddModal, setShowAddModal] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
-  const [selectedTodo, setSelectedTodo] = useState(null);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [filterStatus, setFilterStatus] = useState<
+    "all" | "completed" | "incomplete"
+  >("all");
+  const [showAddModal, setShowAddModal] = useState<boolean>(false);
+  const [showEditModal, setShowEditModal] = useState<boolean>(false);
+  const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
 
   const queryClient = useQueryClient();
   const {
@@ -27,34 +36,32 @@ function Home() {
     isError,
     error,
     refetch,
-  } = useQuery({
+  } = useQuery<Todo[], Error>({
     queryKey: ["todos"],
     queryFn: async () => {
       const res = await fetch("https://jsonplaceholder.typicode.com/todos");
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
-      const apiTodos = await res.json();
-      const localTodos = loadLocalTodos();
+      const apiTodos: Todo[] = await res.json();
+      const localTodos: Todo[] = loadLocalTodos();
       return [...localTodos, ...apiTodos];
     },
-
     enabled: false,
   });
 
-  const addTodoMutation = useMutation({
-    mutationFn: async (newTodo) => {
-      return newTodo;
-    },
+  const addTodoMutation = useMutation<Todo, Error, Todo>({
+    mutationFn: async (newTodo: Todo) => newTodo,
     onSuccess: (data) => {
       saveLocalTodo(data);
-      queryClient.setQueryData(["todos"], (old = []) => [data, ...old]);
+      queryClient.setQueryData<Todo[]>(["todos"], (old = []) => [data, ...old]);
       queryClient.setQueryData(["todo", data.id], data);
     },
   });
 
-  const updateTodoMutation = useMutation({
-    mutationFn: async (updatedTodo) => {
-      if (typeof updatedTodo.id === "string") {
+  const updateTodoMutation = useMutation<Todo, Error, Todo>({
+    mutationFn: async (updatedTodo: Todo) => {
+      // ✅ no need to check typeof id, local todos already have string ids
+      if (typeof updatedTodo.id === "string" && updatedTodo.id.startsWith("local-")) {
         updateLocalTodo(updatedTodo);
         return updatedTodo;
       } else {
@@ -70,14 +77,14 @@ function Home() {
       }
     },
     onSuccess: (updated) => {
-      queryClient.setQueryData(["todos"], (oldTodos = []) =>
+      queryClient.setQueryData<Todo[]>(["todos"], (oldTodos = []) =>
         oldTodos.map((todo) => (todo.id === updated.id ? updated : todo))
       );
     },
   });
 
-  const deleteTodoMutation = useMutation({
-    mutationFn: async (id) => {
+  const deleteTodoMutation = useMutation<string | number, Error, string | number>({
+    mutationFn: async (id: string | number) => {
       await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
         method: "DELETE",
       });
@@ -87,34 +94,32 @@ function Home() {
       if (typeof id === "string") {
         deleteLocalTodo(id);
       }
-
-      queryClient.setQueryData(["todos"], (old = []) =>
+      queryClient.setQueryData<Todo[]>(["todos"], (old = []) =>
         old.filter((todo) => todo.id !== id)
       );
     },
   });
-  const handleEdit = (todo) => {
+
+  const handleEdit = (todo: Todo) => {
     setSelectedTodo(todo);
     setShowEditModal(true);
   };
 
-  const handleUpdate = (updatedTodo) => {
+  const handleUpdate = (updatedTodo: Todo) => {
     updateTodoMutation.mutate(updatedTodo);
   };
 
-  const handleAdd = (todo) => {
+  const handleAdd = (todo: Omit<Todo, "id" | "completed">) => {
     const localId = `local-${nanoid()}`;
-
-    const newTodo = {
+    const newTodo: Todo = {
       ...todo,
       id: localId,
       completed: false,
     };
-
     addTodoMutation.mutate(newTodo);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (id: string | number) => {
     deleteTodoMutation.mutate(id);
   };
 
@@ -130,6 +135,7 @@ function Home() {
 
     return matchesSearch && matchesFilter;
   });
+
   const lastTodo = currentPage * todosPerPage;
   const firstTodo = lastTodo - todosPerPage;
   const currentTodos = filteredTodos.slice(firstTodo, lastTodo);
@@ -149,8 +155,9 @@ function Home() {
         >
           Add Todo
         </button>
+        {/* ✅ fixed refetch call */}
         <button
-          onClick={refetch}
+          onClick={() => refetch()}
           className="w-full mb-4 py-2 px-4 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 cursor-pointer"
         >
           Load Todos
@@ -167,7 +174,9 @@ function Home() {
             {["all", "completed", "incomplete"].map((status) => (
               <button
                 key={status}
-                onClick={() => setFilterStatus(status)}
+                onClick={() =>
+                  setFilterStatus(status as "all" | "completed" | "incomplete")
+                }
                 className={`px-3 py-1 rounded-lg text-sm font-medium transition shadow-sm cursor-pointer ${
                   filterStatus === status
                     ? "bg-purple-600 text-white"
@@ -180,7 +189,7 @@ function Home() {
           </div>
         </div>
         {isLoading && <p className="text-gray-500">Loading...</p>}
-        {isError && <p className="text-red-600">Error: {error.message}</p>}
+        {isError && <p className="text-red-600">Error: {error?.message}</p>}
         {!isLoading && todos.length > 0 && (
           <>
             <ul className="space-y-4">
