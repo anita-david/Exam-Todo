@@ -10,6 +10,12 @@ import {
   updateLocalTodo,
   deleteLocalTodo,
 } from "../utils/localStorage";
+import { logout } from "../firebase/config";
+import { useNavigate } from "react-router-dom";
+
+
+ 
+
 
 interface Todo {
   id: string;
@@ -28,7 +34,12 @@ function Home() {
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
   const [showEditModal, setShowEditModal] = useState<boolean>(false);
   const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
+ const navigate = useNavigate();
 
+  const handleLogout = async () => {
+    await logout();
+    navigate("/login"); // redirect back to login after logout
+  };
   const queryClient = useQueryClient();
   const {
     data: todos = [],
@@ -145,9 +156,15 @@ function Home() {
     <main className="min-h-screen bg-gradient-to-b from-purple-100 to-purple-200 p-6">
       <div className="max-w-md mx-auto">
         <div className="text-center mb-8">
-          <header className="text-3xl font-bold text-purple-700">
-            To Do List
+          <header className="flex justify-between items-center text-3xl font-bold text-purple-700">
+            <h1>To Do List</h1><button
+  onClick={handleLogout}
+  className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+>
+  Logout
+</button>
           </header>
+          
         </div>
         <button
           onClick={() => setShowAddModal(true)}
@@ -162,6 +179,7 @@ function Home() {
         >
           Load Todos
         </button>
+         
         <div className="mb-4 space-y-2">
           <input
             type="text"
