@@ -4,12 +4,14 @@ import TodoDetail from "./pages/TodoDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import CrashTest from "./pages/CrashTest.tsx";
 import FirebaseCheck from "../src/components/FirebaseCheck.tsx";
+import Signup from "./pages/Signup.tsx";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/todos/:id" element={<TodoDetail />} />
+      <Route path="/signup" element={<Signup />} />
       <Route path="/crash-test" element={<CrashTest />} />
       <Route path="/firebase-check" element={<FirebaseCheck />} />
       <Route path="*" element={<NotFound />} />
