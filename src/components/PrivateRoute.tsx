@@ -13,5 +13,5 @@ export default function PrivateRoute({ children }: PrivateRouteProps) {
     return <p className="text-center text-gray-500">Loading...</p>;
   }
 
-  return currentUser ? children : <Navigate to="/signup" replace />;
+  return currentUser ? children : <Navigate to="/" replace />;
 }
