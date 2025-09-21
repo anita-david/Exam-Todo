@@ -35,7 +35,9 @@ export default function Login() {
       <form
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded-lg shadow-lg w-96"
-      >
+      > <h1 className="text-3xl font-semibold text-purple-700 mb-4 text-center">
+          Todo List
+        </h1>
         <h2 className="text-2xl font-semibold text-purple-700 mb-4 text-center">
           Login
         </h2>
