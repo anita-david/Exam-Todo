@@ -10,9 +10,9 @@ import Login from "./pages/Login.tsx";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/todos/:id" element={<TodoDetail />} />
-      <Route path="/signup" element={<Signup />} />
+      <Route path="/" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       <Route path="/crash-test" element={<CrashTest />} />
       <Route path="/firebase-check" element={<FirebaseCheck />} />

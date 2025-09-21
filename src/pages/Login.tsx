@@ -18,7 +18,7 @@ export default function Login() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/"); // redirect to home after login
+      navigate("/home"); // redirect to home after login
     } catch (err) {
   if (err instanceof FirebaseError) {
     setError(err.message);
