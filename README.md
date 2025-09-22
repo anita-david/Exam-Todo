@@ -14,12 +14,13 @@ A fully-featured Todo App built with React 19, TanStack Router, TanStack Query, 
 - Local todo support (via localStorage)
 - Error handling (error boundary + 404)
 - Loading states & visual feedback
+- Newly implemented User Authentication
 
 ---
 
 ## Demo
 
-**Live URL**: https://anita-david-todo-exam.vercel.app/
+**Live URL**: https://anita-todo.pipeops.net/ OR https://anita-david-todo-exam.vercel.app/
 
 ---
 
@@ -87,16 +88,16 @@ Handling update/delete logic for newly created todos not in the JSON API
 
 ```bash
 
-npm run build
+pnpm run build
 
 
-npm run preview
+pnpm run preview
 
 
-npm install
+pnpm install
 
 
-npm run dev
+pnpm run dev
 ```
 
 ---
@@ -105,7 +106,7 @@ npm run dev
 
 Replace JSONPlaceholder with a real backend
 
-Add user authentication
+Add user authentication(Added)
 
 Use IndexedDB for full offline support
 
