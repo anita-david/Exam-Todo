@@ -1,4 +1,4 @@
-# React Todo App – AltSchool Second Semester Exam Project
+# React Todo App
 
 A fully featured todo application built by Anita David using React 19, TanStack Router, TanStack Query, and TailwindCSS. This project was originally created for the AltSchool Frontend Engineering Tinyuka 2024 Second Semester Examination but has been refined to meet international frontend engineering standards.
 
