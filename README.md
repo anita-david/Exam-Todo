@@ -92,13 +92,21 @@ pnpm run dev
 
 ## How to Use
 -Start the development server.
+
 -Open the application in your browser.
+
 -Sign up or Login
+
 -Add a new todo using the "Add Todo" button.
+
 -Click any todo to view details.
+
 -Filter tasks by completed or pending status.
+
 -Search tasks by title.
+
 -Navigate pages using pagination controls.
+
 -Edit or delete todos using modal actions.
 
 ---
